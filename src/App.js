@@ -2,6 +2,7 @@ import './App.css';
 import firebase from './firebase.js';
 import { useEffect, useState } from 'react'
 
+
 /*
 *
 * Explore Japan App
@@ -84,6 +85,8 @@ function App() {
     dbRef.child(remove).remove();
   }
 
+  
+
 
 
 return (
@@ -91,12 +94,18 @@ return (
     <header>
       <nav>
         <ul class="regionNav">
-          <li><button value="Kanto Region" onClick={selectRegion}>Kanto</button></li>
-          <li><button value="Kansai Region" onClick={selectRegion}>Kansai</button></li>
           <li><button value="Hokkaido Region" onClick={selectRegion}>Hokkaido</button></li>
+          <li><button value="Tohoku Region" onClick={selectRegion}>Tohoku</button></li>
+          <li><button value="Kanto Region" onClick={selectRegion}>Kanto</button></li>
+          <li><button value="Chubu Region" onClick={selectRegion}>Chubu</button></li>
+          <li><button value="Kansai Region" onClick={selectRegion}>Kansai</button></li>
+          <li><button value="Chugoku Region" onClick={selectRegion}>Chugoku</button></li>
+          <li><button value="Shikoku Region" onClick={selectRegion}>Shikoku</button></li>
           <li><button value="Kyushu Region" onClick={selectRegion}>Kyushu</button></li>
+          <li><button value="Okinawa Region" onClick={selectRegion}>Okinawa</button></li>
         </ul>
       </nav>
+      <img src="japanRegionMap1.png" alt="" />
     </header>
   <div className="wrapper">
     <div className="App">
@@ -129,7 +138,7 @@ return (
               })
             }
           </ul>
-      </div>
+      </div> 
       {/* end of App div */}
     </div>
   </div>
