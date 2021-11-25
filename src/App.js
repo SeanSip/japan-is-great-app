@@ -2,6 +2,7 @@ import './App.css';
 import firebase from './firebase.js';
 import { useEffect, useState } from 'react'
 
+
 /*
 *
 * Explore Japan App
@@ -36,7 +37,7 @@ import { useEffect, useState } from 'react'
 */
 
 function App() {
-  const [selectedRegion, setSelectedRegion] = useState("Kanto");
+  const [selectedRegion, setSelectedRegion] = useState("");
   const [recommendationsList, setRecommendationsList] = useState([])
   const [userInput, setUserInput] = useState("")
   
@@ -76,50 +77,72 @@ function App() {
   }
 
 
+  const removeComment = (remove) => {
+    // get access to our database
+    const dbRef = firebase.database().ref();
+
+    // use a new firebase methods to remove an item
+    dbRef.child(remove).remove();
+  }
+
+  
 
 
 
-  return (
-  <>  
-    <div className="App">
+return (
+<>
+    <header>
       <nav>
         <ul class="regionNav">
-          <li><button value="kanto" onClick={selectRegion}>Kanto</button></li>
-          <li><button value="kansai" onClick={selectRegion}>Kansai</button></li>
-          <li><button value="hokkaido" onClick={selectRegion}>Hokkaido</button></li>
-          <li><button value="kyushu" onClick={selectRegion}>Kyushu</button></li>
+          <li><button value="Hokkaido Region" onClick={selectRegion}>Hokkaido</button></li>
+          <li><button value="Tohoku Region" onClick={selectRegion}>Tohoku</button></li>
+          <li><button value="Kanto Region" onClick={selectRegion}>Kanto</button></li>
+          <li><button value="Chubu Region" onClick={selectRegion}>Chubu</button></li>
+          <li><button value="Kansai Region" onClick={selectRegion}>Kansai</button></li>
+          <li><button value="Chugoku Region" onClick={selectRegion}>Chugoku</button></li>
+          <li><button value="Shikoku Region" onClick={selectRegion}>Shikoku</button></li>
+          <li><button value="Kyushu Region" onClick={selectRegion}>Kyushu</button></li>
+          <li><button value="Okinawa Region" onClick={selectRegion}>Okinawa</button></li>
         </ul>
       </nav>
-      <h1>Experience Japan Together!</h1>
-      <div>
-        { selectedRegion }
+      <img src="japanRegionMap1.png" alt="" />
+    </header>
+  <div className="wrapper">
+    <div className="App">
+      
+      <div class="region">
+      <h1>What Will You Do In: <span> { selectedRegion }</span></h1>
       </div>
 
-      {/*  testing  */}
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="">Write your comment here</label>
-        <input 
-        id=""
-        type="text"
-        value={ userInput }
-        onChange={ handleChange }
-        />
-        </form>
-
-        <ul>
-          {
-            recommendationsList.map(recommendation => {
-              return(
-                <li key={ recommendation.id }>
-                  {recommendation.comment}
-                </li>
-              )
-            })
-          }
-        </ul>
-        {/* testing */}
+      
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="newComment">Write your comments below:</label>
+            <input 
+            placeholder="Please type in your adventure here"
+            id="newComment"
+            type="text"
+            value={ userInput }
+            onChange={ handleChange }
+            />
+          </form>
+      <div class="submitContainer">
+          <ul class="addedComments">
+            {
+              recommendationsList.map(recommendation => {
+                return(
+                  <li key={ recommendation.id }>
+                    <button onClick={ () => removeComment(recommendation.id) }>Remove</button>
+                    {recommendation.comment}
+                  </li>
+                )
+              })
+            }
+          </ul>
+      </div> 
+      {/* end of App div */}
     </div>
-  </>
+  </div>
+</>  
   );
 }
 
