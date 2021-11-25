@@ -66,7 +66,7 @@ return (
           <li><button value="Okinawa Region" onClick={selectRegion}>Okinawa</button></li>
         </ul>
       </nav>
-      <img src="japanRegionMap1.png" alt="" />
+      <img src="japanRegionMap1.png" alt="A map of Japan" />
     </header>
   <div className="wrapper">
     <div className="App">
