@@ -14,8 +14,8 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
   margin: 0;
 }
 
-.App {
- 
+.hamburger {
+ display: none;
 }
 /* Wrapper */
 
@@ -61,6 +61,7 @@ header button{
 .regionNav {
   margin-top: 50px;
   display: flex;
+  width: 100%;
 }
 
 .regionNav ul{
@@ -99,7 +100,8 @@ button {
 }
 
 .addedComments button {
-  margin: 0 10px 0 0;
+  display: block;
+  margin: 15px 0 0 auto;
 
 }
 
@@ -141,7 +143,7 @@ input{
 
 input::placeholder{
   color: white;
-  font-size: 20px;
+  font-size: 1rem;
   text-align: center;
   
 }
@@ -154,7 +156,14 @@ input[type=text]{
 
 /* comment section */
 
+form button {
+  width: 90%;
+  margin-bottom: 35px;
+}
 
+input {
+  margin: 20px 0 0 auto;
+}
 
 .submitContainer{
   display: flex;
@@ -182,7 +191,37 @@ input[type=text]{
   overflow-wrap: break-word;
 }
 
+@media (max-width: 985px) {
+ 
+
+  .regionNav {
+    margin: 30px auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 70%;
+  }
+
+  .regionNav button {
+    width: 120px;
+    margin: 10px 20px 10px 20px;
+    padding: 20px;
+  }
+
+  .region {
+    width: 80%;
+  }
+
+}
+
 @media (max-width: 838px) {
+  
+  .regionNav {
+    margin: 30px auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 75%;
+  }
+  
   img {
     right: 0;
     left: 0;
@@ -190,8 +229,25 @@ input[type=text]{
 
 }
 
+@media (max-width: 679px){
+  
+  .regionNav {
+    margin: 30px auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 85%;
+  }
+}
+
 @media (max-width: 500px) {
- img{
+ 
+  .regionNav {
+    margin: 30px auto;
+    justify-content: center;
+    width: 100%;
+  }
+ 
+  img{
    display: none;
  }
 
@@ -199,10 +255,32 @@ input[type=text]{
    min-height: 20vh;
  }
 
- .regionNav{
-  flex-direction: column;
-  
 }
+
+@media (max-width: 375px) {
+
+  .regionNav {
+    margin: 30px auto;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .regionNav button {
+    width: 90px;
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .region {
+    width: 100%;
+  }
+
+  .addedComments button {
+    
+    margin: 0 10px 0 0;
+  
+  }
+
 
 
 }
